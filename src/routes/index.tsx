@@ -407,6 +407,55 @@ function PortfolioPage() {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <section id="faq" className="relative mx-auto max-w-[1600px] px-6 py-24 sm:px-10 lg:px-[5.5rem] lg:py-32">
+        <div className="relative mb-16">
+          <span className="corner-mark" aria-hidden="true" />
+          <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">FAQ</p>
+        </div>
+
+        <h2 className="max-w-[900px] text-[clamp(3rem,7vw,6.5rem)] font-medium leading-[0.9] tracking-tight">
+          Questions
+        </h2>
+
+        <div className="mt-16 flex flex-col gap-px overflow-hidden rounded-[5px] border border-border/40">
+          {[
+            {
+              q: "What can I do for you?",
+              a: "I design and build AI-powered websites, mobile apps, and custom automations — from concept to launch. Whether you need a polished storefront, a data-driven web app, or workflows that eliminate busywork, I handle the full stack so you don't have to.",
+            },
+            {
+              q: "Why should I hire you?",
+              a: "Two years of shipping real products means I move fast without cutting corners. I combine modern AI tooling with clean engineering to deliver work that's genuinely production-ready — not prototypes dressed up as finished products.",
+            },
+            {
+              q: "What do you need from me to get started?",
+              a: "A clear idea of what you want to build, your timeline, and any existing assets like a logo or brand guide. A short call is usually enough — I'll ask the right questions and take it from there.",
+            },
+          ].map((item, i) => (
+            <div
+              key={i}
+              className="glass-tile group flex flex-col gap-4 rounded-none border-b border-border/30 px-8 py-7 last:border-b-0 sm:flex-row sm:items-start sm:gap-12 sm:px-10 sm:py-8"
+            >
+              <span className="shrink-0 text-[11px] font-semibold uppercase tracking-[0.15em] text-muted-foreground sm:pt-1">
+                {String(i + 1).padStart(2, "0")}
+              </span>
+              <div className="flex flex-1 flex-col gap-3 sm:flex-row sm:gap-16">
+                <h3 className="text-[15px] font-semibold leading-snug sm:w-[240px] sm:shrink-0">
+                  {item.q}
+                </h3>
+                <p className="flex-1 text-[13px] leading-[1.7] text-muted-foreground">
+                  {item.a}
+                </p>
+              </div>
+              <span className="hidden size-6 shrink-0 items-center justify-center rounded-full border border-border text-muted-foreground transition-colors group-hover:border-signal group-hover:text-signal sm:flex" aria-hidden="true">
+                +
+              </span>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* Contact Section */}
       <section id="contact" className="relative mx-auto max-w-[1600px] px-6 py-24 sm:px-10 lg:px-[5.5rem] lg:py-32">
         <div className="glass-strong relative overflow-hidden rounded-md px-6 py-16 sm:px-12 sm:py-20 lg:px-20 lg:py-28">
