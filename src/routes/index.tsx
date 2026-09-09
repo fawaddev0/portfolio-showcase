@@ -81,6 +81,29 @@ const services = [
   },
 ];
 
+const projects = [
+  {
+    number: "01",
+    title: "SpiralWear",
+    tagline: "Clothing Brand",
+    copy: "A dark, editorial e-commerce experience for a streetwear label — fast, static-first storefront built to convert.",
+    stack: ["Astro", "Cloudflare"],
+    url: "https://spiralwear.pk",
+    image: projectSpiralwear,
+    alt: "SpiralWear clothing brand website preview",
+  },
+  {
+    number: "02",
+    title: "Gascon Chess",
+    tagline: "Chess Learning App",
+    copy: "An interactive chess learning platform with lessons, live boards, and progress tracking backed by realtime data.",
+    stack: ["Next.js", "Supabase"],
+    url: "https://gascon-chess-app.vercel.app",
+    image: projectGascon,
+    alt: "Gascon chess learning app interface preview",
+  },
+];
+
 const testimonials = [
   {
     quote: "Working with Fawad was effortless. He understood the product vision instantly and shipped an AI website that our customers genuinely love.",
