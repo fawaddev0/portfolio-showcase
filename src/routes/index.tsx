@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+// check
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import portrait from "../assets/portfolio-portrait.jpg";
@@ -263,7 +264,7 @@ function PortfolioPage() {
 
         {menuOpen && (
           <nav className="absolute right-6 top-20 z-50 w-56 rounded-md border border-border bg-surface-emphasis p-2 shadow-2xl sm:right-10 lg:right-[5.5rem]" aria-label="Main navigation">
-            {['About', 'Services', 'Testimonials', 'Contact'].map((item) => (
+            {['About', 'Services', 'Projects', 'Testimonials', 'Contact'].map((item) => (
               <a key={item} href={`#${item.toLowerCase()}`} className="block rounded-sm px-4 py-3 text-sm font-semibold transition-colors hover:bg-accent">
                 {item}
               </a>
