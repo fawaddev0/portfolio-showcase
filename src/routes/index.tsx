@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-// placeholder
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import portrait from "../assets/portfolio-portrait.jpg";
