@@ -79,6 +79,29 @@ const services = [
   },
 ];
 
+const testimonials = [
+  {
+    quote: "Working with Fawad was effortless. He understood the product vision instantly and shipped an AI website that our customers genuinely love.",
+    name: "Sarah Mitchell",
+    role: "Founder, Northlane Studio",
+  },
+  {
+    quote: "The mobile app he built for us feels fast, polished, and reliable. His attention to detail is rare for someone this early in their career.",
+    name: "Daniel Osei",
+    role: "Product Lead, Klyde",
+  },
+  {
+    quote: "Our internal automations now save the team over twenty hours a week. He connected tools we thought could never talk to each other.",
+    name: "Amira Khan",
+    role: "Operations Director, Fieldwork",
+  },
+  {
+    quote: "From a rough idea on a call to a working app in days. The vibe-coded prototype he delivered helped us close our first round of funding.",
+    name: "Lucas Weber",
+    role: "CEO, Driftbase",
+  },
+];
+
 function StudioMark({ type }: { type: (typeof studios)[number][0] }) {
   if (type === "ring") return <span className="studio-ring" />;
   if (type === "links") return <span className="studio-links" />;
@@ -115,7 +138,7 @@ function PortfolioPage() {
 
         {menuOpen && (
           <nav className="absolute right-6 top-20 z-50 w-56 rounded-md border border-border bg-surface-emphasis p-2 shadow-2xl sm:right-10 lg:right-[5.5rem]" aria-label="Main navigation">
-            {['About', 'Services', 'Contact'].map((item) => (
+            {['About', 'Services', 'Testimonials', 'Contact'].map((item) => (
               <a key={item} href={`#${item.toLowerCase()}`} className="block rounded-sm px-4 py-3 text-sm font-semibold transition-colors hover:bg-accent">
                 {item}
               </a>
