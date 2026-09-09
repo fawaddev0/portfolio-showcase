@@ -135,6 +135,106 @@ function StudioMark({ type }: { type: (typeof studios)[number][0] }) {
   return <span className="studio-disc" />;
 }
 
+function ProjectsSection() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    const track = trackRef.current;
+    if (!section || !track) return;
+
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const rect = section.getBoundingClientRect();
+      const scrollable = rect.height - window.innerHeight;
+      if (scrollable <= 0) return;
+      const progress = Math.min(Math.max(-rect.top / scrollable, 0), 1);
+      const distance = track.scrollWidth - track.parentElement!.clientWidth;
+      track.style.transform = `translateX(${-progress * distance}px)`;
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, []);
+
+  return (
+    <section id="projects" ref={sectionRef} className="relative h-[320vh]">
+      <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">
+        <div className="mx-auto w-full max-w-[1600px] px-6 sm:px-10 lg:px-[5.5rem]">
+          <div className="relative mb-8">
+            <span className="corner-mark" aria-hidden="true" />
+            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">Selected work</p>
+          </div>
+          <h2 className="text-[clamp(3rem,7vw,6.5rem)] font-medium leading-[0.9] tracking-tight">Projects</h2>
+        </div>
+
+        <div className="mt-12">
+          <div ref={trackRef} className="flex gap-6 pl-6 will-change-transform sm:pl-10 lg:pl-[5.5rem]">
+            {projects.map((project) => (
+              <article
+                key={project.title}
+                className="group relative flex w-[85vw] max-w-[560px] shrink-0 flex-col rounded-md bg-surface p-6 transition-colors hover:bg-surface-emphasis sm:p-8"
+              >
+                <span className="corner-mark" aria-hidden="true" />
+                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-md">
+                  <img
+                    src={project.image}
+                    alt={project.alt}
+                    width={1024}
+                    height={1024}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <div className="mt-6 flex items-start justify-between gap-4">
+                  <div>
+                    <span className="text-[11px] font-semibold uppercase tracking-[0.15em] text-muted-foreground">
+                      {project.number} — {project.tagline}
+                    </span>
+                    <h3 className="mt-2 text-2xl font-semibold leading-tight">{project.title}</h3>
+                  </div>
+                  <a
+                    href={project.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`Visit ${project.title} live site`}
+                    className="flex size-11 shrink-0 items-center justify-center rounded-full border border-border transition-colors hover:border-signal hover:bg-signal hover:text-background"
+                  >
+                    <ArrowUpRight size={18} strokeWidth={1.8} />
+                  </a>
+                </div>
+                <p className="mt-3 text-[12px] leading-[1.6] text-muted-foreground">{project.copy}</p>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {project.stack.map((tech) => (
+                    <span key={tech} className="rounded-full border border-border px-3 py-1 text-[10px] font-semibold text-muted-foreground">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div className="mx-auto mt-10 flex w-full max-w-[1600px] items-center gap-3 px-6 sm:px-10 lg:px-[5.5rem]">
+          <span className="size-1.5 rounded-full bg-signal" aria-hidden="true" />
+          <p className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground">Keep scrolling to explore projects</p>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function PortfolioPage() {
   const [menuOpen, setMenuOpen] = useState(false);
 
