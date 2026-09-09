@@ -184,7 +184,7 @@ function ProjectsSection() {
             {projects.map((project) => (
               <article
                 key={project.title}
-                className="group relative flex w-[85vw] max-w-[560px] shrink-0 flex-col rounded-md bg-surface p-6 transition-colors hover:bg-surface-emphasis sm:p-8"
+                className="glass group relative flex w-[85vw] max-w-[560px] shrink-0 flex-col rounded-md p-6 transition-colors hover:bg-surface-emphasis sm:p-8"
               >
                 <span className="corner-mark" aria-hidden="true" />
                 <div className="relative aspect-[4/3] w-full overflow-hidden rounded-md">
@@ -217,7 +217,7 @@ function ProjectsSection() {
                 <p className="mt-3 text-[12px] leading-[1.6] text-muted-foreground">{project.copy}</p>
                 <div className="mt-5 flex flex-wrap gap-2">
                   {project.stack.map((tech) => (
-                    <span key={tech} className="rounded-full border border-border px-3 py-1 text-[10px] font-semibold text-muted-foreground">
+                    <span key={tech} className="glass rounded-full px-3 py-1 text-[10px] font-semibold text-muted-foreground">
                       {tech}
                     </span>
                   ))}
@@ -245,7 +245,7 @@ function PortfolioPage() {
         <header className="relative z-40 flex items-center justify-between">
           <a href="#top" className="flex items-center gap-2 text-[15px] font-bold" aria-label="Jay Cole home">
             <span>Jay Cole<sup className="ml-0.5 text-[7px]">®</sup></span>
-            <span className="flex items-center gap-1.5 rounded-full bg-surface px-3 py-1.5 text-[9px] font-medium text-muted-foreground">
+            <span className="glass flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[9px] font-medium text-muted-foreground">
               <span className="size-1.5 rounded-full bg-signal" /> Available
             </span>
           </a>
@@ -255,7 +255,7 @@ function PortfolioPage() {
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((open) => !open)}
-            className="flex h-11 items-center gap-3 rounded-full bg-surface px-5 text-[12px] font-semibold transition-colors hover:bg-surface-emphasis focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+            className="glass flex h-11 items-center gap-3 rounded-full px-5 text-[12px] font-semibold transition-colors hover:bg-surface-emphasis focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
           >
             <span>{menuOpen ? "Close" : "Menu"}</span>
             {menuOpen ? <X size={18} strokeWidth={1.8} /> : <Menu size={18} strokeWidth={1.8} />}
@@ -263,7 +263,7 @@ function PortfolioPage() {
         </header>
 
         {menuOpen && (
-          <nav className="absolute right-6 top-20 z-50 w-56 rounded-md border border-border bg-surface-emphasis p-2 shadow-2xl sm:right-10 lg:right-[5.5rem]" aria-label="Main navigation">
+          <nav className="glass-strong absolute right-6 top-20 z-50 w-56 rounded-md p-2 shadow-2xl sm:right-10 lg:right-[5.5rem]" aria-label="Main navigation">
             {['About', 'Services', 'Projects', 'Testimonials', 'Contact'].map((item) => (
               <a key={item} href={`#${item.toLowerCase()}`} className="block rounded-sm px-4 py-3 text-sm font-semibold transition-colors hover:bg-accent">
                 {item}
@@ -301,7 +301,7 @@ function PortfolioPage() {
 
         <div className="absolute inset-x-6 bottom-7 z-30 grid grid-cols-2 gap-2 sm:inset-x-10 sm:grid-cols-3 lg:inset-x-[5.5rem] lg:grid-cols-6">
           {studios.map(([mark, label], index) => (
-            <div key={`${label}-${index}`} className="flex h-[62px] items-center justify-center gap-2 rounded-md bg-surface px-3 text-[11px] font-bold">
+            <div key={`${label}-${index}`} className="glass flex h-[62px] items-center justify-center gap-2 rounded-md px-3 text-[11px] font-bold transition-colors hover:bg-surface-emphasis">
               <StudioMark type={mark} />
               <span>{label}</span>
             </div>
@@ -347,7 +347,7 @@ function PortfolioPage() {
                 {techStack.map((tech) => (
                   <span
                     key={tech}
-                    className="flex h-11 items-center rounded-md bg-surface px-5 text-[12px] font-bold transition-colors hover:bg-surface-emphasis"
+                    className="glass flex h-11 items-center rounded-md px-5 text-[12px] font-bold transition-colors hover:bg-surface-emphasis"
                   >
                     {tech}
                   </span>
@@ -373,7 +373,7 @@ function PortfolioPage() {
           {services.map((service) => (
             <article
               key={service.title}
-              className="group relative flex flex-col rounded-md bg-surface p-6 transition-colors hover:bg-surface-emphasis sm:p-8"
+              className="glass group relative flex flex-col rounded-md p-6 transition-colors hover:bg-surface-emphasis sm:p-8"
             >
               <span className="corner-mark" aria-hidden="true" />
               <span className="text-[11px] font-semibold uppercase tracking-[0.15em] text-muted-foreground">{service.number}</span>
@@ -384,6 +384,9 @@ function PortfolioPage() {
           ))}
         </div>
       </section>
+
+      {/* Projects Section */}
+      <ProjectsSection />
 
       {/* Testimonials Section */}
       <section id="testimonials" className="relative mx-auto max-w-[1600px] px-6 py-24 sm:px-10 lg:px-[5.5rem] lg:py-32">
@@ -400,7 +403,7 @@ function PortfolioPage() {
           {testimonials.map((testimonial, index) => (
             <figure
               key={testimonial.name}
-              className="group relative flex flex-col justify-between rounded-md bg-surface p-6 transition-colors hover:bg-surface-emphasis sm:p-10"
+              className="glass group relative flex flex-col justify-between rounded-md p-6 transition-colors hover:bg-surface-emphasis sm:p-10"
             >
               <span className="corner-mark" aria-hidden="true" />
               <div>
@@ -412,7 +415,7 @@ function PortfolioPage() {
                 </blockquote>
               </div>
               <figcaption className="mt-10 flex items-center gap-4">
-                <span className="flex size-11 items-center justify-center rounded-full bg-surface-emphasis text-[13px] font-bold transition-colors group-hover:bg-signal group-hover:text-background" aria-hidden="true">
+                <span className="glass-strong flex size-11 items-center justify-center rounded-full text-[13px] font-bold transition-colors group-hover:bg-signal group-hover:text-background" aria-hidden="true">
                   {testimonial.name.split(" ").map((n) => n[0]).join("")}
                 </span>
                 <div>
@@ -427,7 +430,7 @@ function PortfolioPage() {
 
       {/* Contact Section */}
       <section id="contact" className="relative mx-auto max-w-[1600px] px-6 py-24 sm:px-10 lg:px-[5.5rem] lg:py-32">
-        <div className="relative overflow-hidden rounded-md bg-surface px-6 py-16 sm:px-12 sm:py-20 lg:px-20 lg:py-28">
+        <div className="glass-strong relative overflow-hidden rounded-md px-6 py-16 sm:px-12 sm:py-20 lg:px-20 lg:py-28">
           <span className="corner-mark" aria-hidden="true" />
           <div className="relative z-10">
             <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">Contact</p>
@@ -449,7 +452,7 @@ function PortfolioPage() {
               </a>
               <a
                 href="mailto:hello@example.com"
-                className="flex h-14 items-center rounded-full bg-surface-emphasis px-8 text-[13px] font-bold transition-colors hover:bg-accent"
+                className="glass flex h-14 items-center rounded-full px-8 text-[13px] font-bold transition-colors hover:bg-accent"
               >
                 Book a call
               </a>
@@ -475,7 +478,7 @@ function PortfolioPage() {
               href={href}
               target="_blank"
               rel="noreferrer"
-              className="flex h-[62px] items-center justify-center rounded-md bg-surface px-3 text-[11px] font-bold transition-colors hover:bg-surface-emphasis"
+              className="glass flex h-[62px] items-center justify-center rounded-md px-3 text-[11px] font-bold transition-colors hover:bg-surface-emphasis"
             >
               {label}
             </a>

@@ -215,6 +215,22 @@
   transform: scaleX(1.35);
 }
 
+@utility glass {
+  background: color-mix(in oklch, var(--surface) 55%, transparent);
+  backdrop-filter: blur(16px) saturate(1.4);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  border: 1px solid color-mix(in oklch, var(--foreground) 8%, transparent);
+  box-shadow: 0 8px 32px -8px oklch(0 0 0 / 0.3), inset 0 1px 0 0 color-mix(in oklch, var(--foreground) 6%, transparent);
+}
+
+@utility glass-strong {
+  background: color-mix(in oklch, var(--surface-emphasis) 65%, transparent);
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+  border: 1px solid color-mix(in oklch, var(--foreground) 10%, transparent);
+  box-shadow: 0 12px 40px -10px oklch(0 0 0 / 0.4), inset 0 1px 0 0 color-mix(in oklch, var(--foreground) 8%, transparent);
+}
+
 @media (max-width: 639px) {
   .service-item { justify-self: start !important; }
 }
