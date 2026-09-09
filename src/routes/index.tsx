@@ -79,6 +79,29 @@ const services = [
   },
 ];
 
+const testimonials = [
+  {
+    quote: "Working with Fawad was effortless. He understood the product vision instantly and shipped an AI website that our customers genuinely love.",
+    name: "Sarah Mitchell",
+    role: "Founder, Northlane Studio",
+  },
+  {
+    quote: "The mobile app he built for us feels fast, polished, and reliable. His attention to detail is rare for someone this early in their career.",
+    name: "Daniel Osei",
+    role: "Product Lead, Klyde",
+  },
+  {
+    quote: "Our internal automations now save the team over twenty hours a week. He connected tools we thought could never talk to each other.",
+    name: "Amira Khan",
+    role: "Operations Director, Fieldwork",
+  },
+  {
+    quote: "From a rough idea on a call to a working app in days. The vibe-coded prototype he delivered helped us close our first round of funding.",
+    name: "Lucas Weber",
+    role: "CEO, Driftbase",
+  },
+];
+
 function StudioMark({ type }: { type: (typeof studios)[number][0] }) {
   if (type === "ring") return <span className="studio-ring" />;
   if (type === "links") return <span className="studio-links" />;
@@ -115,7 +138,7 @@ function PortfolioPage() {
 
         {menuOpen && (
           <nav className="absolute right-6 top-20 z-50 w-56 rounded-md border border-border bg-surface-emphasis p-2 shadow-2xl sm:right-10 lg:right-[5.5rem]" aria-label="Main navigation">
-            {['About', 'Services', 'Contact'].map((item) => (
+            {['About', 'Services', 'Testimonials', 'Contact'].map((item) => (
               <a key={item} href={`#${item.toLowerCase()}`} className="block rounded-sm px-4 py-3 text-sm font-semibold transition-colors hover:bg-accent">
                 {item}
               </a>
@@ -235,6 +258,116 @@ function PortfolioPage() {
           ))}
         </div>
       </section>
+
+      {/* Testimonials Section */}
+      <section id="testimonials" className="relative mx-auto max-w-[1600px] px-6 py-24 sm:px-10 lg:px-[5.5rem] lg:py-32">
+        <div className="relative mb-16">
+          <span className="corner-mark" aria-hidden="true" />
+          <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">Kind words</p>
+        </div>
+
+        <h2 className="max-w-[900px] text-[clamp(3rem,7vw,6.5rem)] font-medium leading-[0.9] tracking-tight">
+          Testimonials
+        </h2>
+
+        <div className="mt-16 grid gap-4 sm:grid-cols-2">
+          {testimonials.map((testimonial, index) => (
+            <figure
+              key={testimonial.name}
+              className="group relative flex flex-col justify-between rounded-md bg-surface p-6 transition-colors hover:bg-surface-emphasis sm:p-10"
+            >
+              <span className="corner-mark" aria-hidden="true" />
+              <div>
+                <span className="text-[11px] font-semibold uppercase tracking-[0.15em] text-muted-foreground">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <blockquote className="mt-6 text-[17px] leading-[1.6] font-medium">
+                  &ldquo;{testimonial.quote}&rdquo;
+                </blockquote>
+              </div>
+              <figcaption className="mt-10 flex items-center gap-4">
+                <span className="flex size-11 items-center justify-center rounded-full bg-surface-emphasis text-[13px] font-bold transition-colors group-hover:bg-signal group-hover:text-background" aria-hidden="true">
+                  {testimonial.name.split(" ").map((n) => n[0]).join("")}
+                </span>
+                <div>
+                  <p className="text-[14px] font-semibold leading-tight">{testimonial.name}</p>
+                  <p className="mt-1 text-[11px] text-muted-foreground">{testimonial.role}</p>
+                </div>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="relative mx-auto max-w-[1600px] px-6 py-24 sm:px-10 lg:px-[5.5rem] lg:py-32">
+        <div className="relative overflow-hidden rounded-md bg-surface px-6 py-16 sm:px-12 sm:py-20 lg:px-20 lg:py-28">
+          <span className="corner-mark" aria-hidden="true" />
+          <div className="relative z-10">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-muted-foreground">Contact</p>
+
+            <h2 className="mt-8 max-w-[1000px] text-[clamp(3rem,8vw,7.5rem)] font-medium leading-[0.9] tracking-tight">
+              Let&apos;s build<br />something great
+            </h2>
+
+            <p className="mt-8 max-w-[520px] text-[15px] leading-[1.7] text-muted-foreground">
+              Have a project in mind? Whether it&apos;s an AI website, a mobile app, or an automation that saves your team hours — I&apos;d love to hear about it.
+            </p>
+
+            <div className="mt-12 flex flex-wrap items-center gap-4">
+              <a
+                href="mailto:hello@example.com"
+                className="flex h-14 items-center rounded-full bg-signal px-8 text-[13px] font-bold text-background transition-transform hover:scale-[1.03] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
+              >
+                hello@example.com
+              </a>
+              <a
+                href="mailto:hello@example.com"
+                className="flex h-14 items-center rounded-full bg-surface-emphasis px-8 text-[13px] font-bold transition-colors hover:bg-accent"
+              >
+                Book a call
+              </a>
+            </div>
+          </div>
+
+          <div className="pointer-events-none absolute -bottom-10 -right-10 size-56 rounded-full border border-border" aria-hidden="true" />
+          <div className="pointer-events-none absolute -bottom-24 -right-24 size-80 rounded-full border border-border/60" aria-hidden="true" />
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="relative mx-auto max-w-[1600px] px-6 pb-10 pt-4 sm:px-10 lg:px-[5.5rem]">
+        <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+          {[
+            ["GitHub", "https://github.com"],
+            ["LinkedIn", "https://linkedin.com"],
+            ["X / Twitter", "https://x.com"],
+            ["Email", "mailto:hello@example.com"],
+          ].map(([label, href]) => (
+            <a
+              key={label}
+              href={href}
+              target="_blank"
+              rel="noreferrer"
+              className="flex h-[62px] items-center justify-center rounded-md bg-surface px-3 text-[11px] font-bold transition-colors hover:bg-surface-emphasis"
+            >
+              {label}
+            </a>
+          ))}
+        </div>
+
+        <div className="mt-8 flex flex-col items-start justify-between gap-4 border-t border-border pt-6 sm:flex-row sm:items-center">
+          <a href="#top" className="text-[13px] font-bold">
+            Jay Cole<sup className="ml-0.5 text-[7px]">®</sup>
+          </a>
+          <p className="text-[11px] text-muted-foreground">
+            &copy; {new Date().getFullYear()} Jay Cole. Designed &amp; built with care.
+          </p>
+          <a href="#top" className="text-[11px] font-semibold uppercase tracking-[0.15em] text-muted-foreground transition-colors hover:text-foreground">
+            Back to top
+          </a>
+        </div>
+      </footer>
     </main>
   );
 }
