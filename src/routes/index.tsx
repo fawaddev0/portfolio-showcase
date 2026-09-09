@@ -1,8 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import portrait from "../assets/portfolio-portrait.jpg";
 import aboutPortrait from "../assets/about-portrait.jpg";
+import projectSpiralwear from "../assets/project-spiralwear.jpg";
+import projectGascon from "../assets/project-gascon.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
