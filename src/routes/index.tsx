@@ -1,11 +1,11 @@
 import { createFileRoute } from "@tanstack/react-router";
-// check
-import { ArrowUpRight, Menu, X } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { ArrowUpRight } from "lucide-react";
+import { useEffect, useRef } from "react";
 import portrait from "../assets/portfolio-portrait.jpg";
 import aboutPortrait from "../assets/about-portrait.jpg";
 import projectSpiralwear from "../assets/project-spiralwear.jpg";
 import projectGascon from "../assets/project-gascon.jpg";
+import { FloatingNav } from "../components/floating-nav";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -237,10 +237,9 @@ function ProjectsSection() {
 }
 
 function PortfolioPage() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
   return (
     <main className="min-h-screen overflow-hidden bg-background text-foreground">
+      <FloatingNav />
       <section className="relative mx-auto min-h-[900px] max-w-[1600px] px-6 pb-8 pt-5 sm:px-10 lg:min-h-[960px] lg:px-[5.5rem]">
         <header className="relative z-40 flex items-center justify-between">
           <a href="#top" className="flex items-center gap-2 text-[15px] font-bold" aria-label="Jay Cole home">
@@ -249,28 +248,7 @@ function PortfolioPage() {
               <span className="size-1.5 rounded-full bg-signal" /> Available
             </span>
           </a>
-
-          <button
-            type="button"
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
-            aria-expanded={menuOpen}
-            onClick={() => setMenuOpen((open) => !open)}
-            className="glass flex h-11 items-center gap-3 rounded-full px-5 text-[12px] font-semibold transition-colors hover:bg-surface-emphasis focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring"
-          >
-            <span>{menuOpen ? "Close" : "Menu"}</span>
-            {menuOpen ? <X size={18} strokeWidth={1.8} /> : <Menu size={18} strokeWidth={1.8} />}
-          </button>
         </header>
-
-        {menuOpen && (
-          <nav className="glass-strong absolute right-6 top-20 z-50 w-56 rounded-md p-2 shadow-2xl sm:right-10 lg:right-[5.5rem]" aria-label="Main navigation">
-            {['About', 'Services', 'Projects', 'Testimonials', 'Contact'].map((item) => (
-              <a key={item} href={`#${item.toLowerCase()}`} className="block rounded-sm px-4 py-3 text-sm font-semibold transition-colors hover:bg-accent">
-                {item}
-              </a>
-            ))}
-          </nav>
-        )}
 
         <div id="top" className="absolute left-1/2 top-0 z-0 h-[66%] w-[88%] max-w-[940px] -translate-x-1/2 sm:w-[72%] lg:h-[68%] lg:w-[58%]">
           <img
@@ -373,7 +351,7 @@ function PortfolioPage() {
           {services.map((service) => (
             <article
               key={service.title}
-              className="glass group relative flex flex-col rounded-md p-6 transition-colors hover:bg-surface-emphasis sm:p-8"
+              className="glass-tile group relative flex flex-col p-6 hover:-translate-y-1 sm:p-8"
             >
               <span className="corner-mark" aria-hidden="true" />
               <span className="text-[11px] font-semibold uppercase tracking-[0.15em] text-muted-foreground">{service.number}</span>
@@ -403,7 +381,7 @@ function PortfolioPage() {
           {testimonials.map((testimonial, index) => (
             <figure
               key={testimonial.name}
-              className="glass group relative flex flex-col justify-between rounded-md p-6 transition-colors hover:bg-surface-emphasis sm:p-10"
+              className="glass-tile group relative flex flex-col justify-between p-6 hover:-translate-y-1 sm:p-10"
             >
               <span className="corner-mark" aria-hidden="true" />
               <div>
@@ -416,6 +394,7 @@ function PortfolioPage() {
               </div>
               <figcaption className="mt-10 flex items-center gap-4">
                 <span className="glass-strong flex size-11 items-center justify-center rounded-full text-[13px] font-bold transition-colors group-hover:bg-signal group-hover:text-background" aria-hidden="true">
+
                   {testimonial.name.split(" ").map((n) => n[0]).join("")}
                 </span>
                 <div>

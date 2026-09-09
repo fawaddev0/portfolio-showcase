@@ -231,6 +231,43 @@
   box-shadow: 0 12px 40px -10px oklch(0 0 0 / 0.4), inset 0 1px 0 0 color-mix(in oklch, var(--foreground) 8%, transparent);
 }
 
+@utility glass-tile {
+  background: color-mix(in oklch, var(--surface) 48%, transparent);
+  backdrop-filter: blur(14px) saturate(1.35);
+  -webkit-backdrop-filter: blur(14px) saturate(1.35);
+  border: 1px solid color-mix(in oklch, var(--foreground) 7%, transparent);
+  border-radius: 5px;
+  box-shadow: 0 6px 24px -8px oklch(0 0 0 / 0.25), inset 0 1px 0 0 color-mix(in oklch, var(--foreground) 5%, transparent);
+  transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+}
+
+@utility glass-nav {
+  background: color-mix(in oklch, var(--surface-emphasis) 60%, transparent);
+  backdrop-filter: blur(24px) saturate(1.6);
+  -webkit-backdrop-filter: blur(24px) saturate(1.6);
+  border: 1px solid color-mix(in oklch, var(--foreground) 10%, transparent);
+  box-shadow: 0 8px 32px -6px oklch(0 0 0 / 0.35), inset 0 1px 0 0 color-mix(in oklch, var(--foreground) 8%, transparent);
+}
+
+@utility nav-indicator {
+  position: absolute;
+  border-radius: 9999px;
+  background: color-mix(in oklch, var(--signal) 85%, transparent);
+  transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1), width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 0;
+}
+
+::view-transition-old(nav-indicator),
+::view-transition-new(nav-indicator) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-group(nav-indicator) {
+  animation-duration: 0.4s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 @media (max-width: 639px) {
   .service-item { justify-self: start !important; }
 }
